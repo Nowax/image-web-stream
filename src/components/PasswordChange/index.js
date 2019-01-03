@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { compose } from 'recompose';
+
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
 import { withFirebase } from '../Firebase';
 
@@ -8,7 +14,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-class PasswordChangeForm extends Component {
+class PasswordChangeFormBase extends Component {
   constructor(props) {
     super(props);
 
@@ -35,6 +41,7 @@ class PasswordChangeForm extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     const { passwordOne, passwordTwo, error } = this.state;
 
     const isInvalid =
@@ -42,23 +49,39 @@ class PasswordChangeForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
+        <TextField
+          id="outlined-password-input"
+          label="New Password"
+          className={classes.textField}
+          type="password"
+          autoComplete="current-password"
+          margin="normal"
+          variant="outlined"
           name="passwordOne"
+          onChange={this.onChange}
           value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
         />
-        <input
+        <TextField
+          id="outlined-password-input"
+          label="Repeat New Password"
+          className={classes.textField}
+          type="password"
+          autoComplete="current-password"
+          margin="normal"
+          variant="outlined"
           name="passwordTwo"
-          value={passwordTwo}
           onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
-        />
-        <button disabled={isInvalid} type="submit">
+          value={passwordTwo}
+        /><br/>
+        <Button
+          disabled={isInvalid}
+          size="large"
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          type="submit">
           Reset My Password
-        </button>
+        </Button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -66,4 +89,22 @@ class PasswordChangeForm extends Component {
   }
 }
 
-export default withFirebase(PasswordChangeForm);
+PasswordChangeFormBase.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+const styles = theme => ({
+  textField: {
+    margin: theme.spacing.unit,
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+});
+
+const PasswordChangeForm = compose(
+  withFirebase,
+  withStyles(styles),
+)(PasswordChangeFormBase);
+
+export default PasswordChangeForm;

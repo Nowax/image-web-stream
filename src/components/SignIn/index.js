@@ -7,7 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
-import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import { withTheme } from '../Theme';
@@ -18,7 +17,6 @@ const SignInPage = () => (
     <h1>Sign In</h1>
     <SignInForm />
     <PasswordForgetLink />
-    <SignUpLink />
   </div>
 );
 

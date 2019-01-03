@@ -3,9 +3,8 @@ import { BrowserRouter as Router,
     Route,
  } from 'react-router-dom';
 
-import Navigation from '../Navigation';
-import LandingPage from '../Landing';
-import SignUpPage from '../SignUp';
+import NavigationBar from '../NavigationBar';
+import DashboardPage from '../Dashboard';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
@@ -20,12 +19,9 @@ import * as ROUTES from '../../constants/routes';
 const App = () => (
     <Router>
       <div>
-        <Navigation />
+        <NavigationBar />
 
-        <hr />
-
-        <Route exact path={ROUTES.LANDING} component={LandingPage} />
-        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route exact path={ROUTES.DASHBOARD} component={DashboardPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         <Route
           path={ROUTES.PASSWORD_FORGET}
