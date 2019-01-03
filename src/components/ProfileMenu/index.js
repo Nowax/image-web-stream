@@ -60,7 +60,6 @@ class ProfileMenuBase extends React.Component {
   }
 }
 
-
 ProfileMenuBase.propTypes = {
   classes: PropTypes.object.isRequired,
 };
