@@ -1,6 +1,8 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/firestore';
+import dayjs from 'dayjs'
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -11,12 +13,19 @@ const config = {
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   };
 
+const owner = 'bogdan'
+const todayUTC = () => dayjs().format('YYYY-MM-DD');
+const latestCollectionName = () => `${owner}-${todayUTC()}`
+
 class Firebase {
   constructor() {
     app.initializeApp(config);
 
     this.auth = app.auth();
     this.db = app.database();
+    this.firestore = app.firestore();
+    const settings = {timestampsInSnapshots: true};
+    this.firestore.settings(settings);
   }
 
   // *** Auth API ***
@@ -37,6 +46,20 @@ class Firebase {
   user = uid => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref('users');
+
+  // *** Firestore API ***
+
+  getLatestImage = () => {
+    return this.firestore.collection(latestCollectionName())
+      .orderBy('fileName', 'desc')
+      .limit(1)
+      .get()
+      .then( prevSnapshot => {
+          if (prevSnapshot.docs !== 0) {
+            return prevSnapshot.docs[0].data()
+          }
+      }).catch( e => console.log(e))
+  }
 }
 
 export default Firebase;

@@ -7,6 +7,7 @@
     "@material-ui/icons": "^3.0.1",
     "@material-ui/styles": "^3.0.0-alpha.6",
     "classnames": "^2.2.6",
+    "dayjs": "^1.7.8",
     "firebase": "^5.7.2",
     "material-ui": "^0.20.2",
     "prettier": "^1.15.3",
