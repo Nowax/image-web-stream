@@ -21,11 +21,11 @@ class NavigationBarBase extends React.Component {
       <div className={classes.root}> 
         <AppBar position="static">
           <Toolbar>
-            <NavigationMenu />
+            <NavigationMenu className={classes.grow} />
             <Typography variant="h6" color="inherit" className={classes.grow}>
               Menu
             </Typography>
-            <ProfileMenu />
+            <ProfileMenu className={classes.grow} />
           </Toolbar>
         </AppBar>
       </div>
@@ -39,14 +39,11 @@ NavigationBarBase.propTypes = {
 
 const styles = {
   root: {
-    flexGrow: 1,
+    display: "flex",
   },
   grow: {
+    flex: 1,
     flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
   },
 };
 

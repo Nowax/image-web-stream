@@ -51,7 +51,7 @@ class ProfileMenuBase extends React.Component {
               >
                   {!!authUser && <MenuItem onClick={this.handleClose}><Link className={classes.link} to={ROUTES.ACCOUNT}>Account</Link></MenuItem>}
                   {!authUser && <MenuItem onClick={this.handleClose}><Link className={classes.link} to={ROUTES.SIGN_IN}>Sign In</Link></MenuItem> }
-                  {!!authUser && <MenuItem onClick={this.props.firebase.doSignOut}>Sign Out</MenuItem>}
+                  {!!authUser && <MenuItem onClick={this.props.firebase.doSignOut}><Link className={classes.link}  to={""}>Sign Out</Link></MenuItem>}
               </Menu>
             </div>
           }
@@ -67,6 +67,7 @@ ProfileMenuBase.propTypes = {
 const styles = {
   link: {
     "text-decoration": "none",
+    padding: "10px 30px",
   },
 };
 

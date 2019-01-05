@@ -70,6 +70,7 @@ NavigationMenuBase.propTypes = {
 const styles = {
   link: {
     "text-decoration": "none",
+    padding: "10px 30px",
   },
 };
 
