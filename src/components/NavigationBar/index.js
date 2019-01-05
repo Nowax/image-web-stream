@@ -21,11 +21,11 @@ class NavigationBarBase extends React.Component {
       <div className={classes.root}> 
         <AppBar position="static">
           <Toolbar>
-            <NavigationMenu className={classes.grow} />
+            <NavigationMenu />
             <Typography variant="h6" color="inherit" className={classes.grow}>
               Menu
             </Typography>
-            <ProfileMenu className={classes.grow} />
+            <ProfileMenu />
           </Toolbar>
         </AppBar>
       </div>

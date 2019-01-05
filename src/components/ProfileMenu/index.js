@@ -64,12 +64,13 @@ ProfileMenuBase.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const styles = {
+const styles = theme => ({
   link: {
     "text-decoration": "none",
     padding: "10px 30px",
+    color: theme.palette.primary.dark
   },
-};
+});
 
 const ProfileMenu = compose(
   withAuthentication,

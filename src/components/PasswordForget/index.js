@@ -12,8 +12,8 @@ import * as ROUTES from '../../constants/routes';
 
 const PasswordForgetPage = () => (
   <div>
-    <h1>Type your e-mail address to which we send password reset link</h1>
-    <PasswordForgetForm />
+    <h1 style={{paddingLeft: "15px"}}>Type your e-mail address to which we'll send password reset link</h1>
+    <PasswordForgetForm style={{paddingLeft: "15px"}}/>
   </div>
 );
 
@@ -98,7 +98,7 @@ const styles = theme => ({
 });
 
 const PasswordForgetLink = () => (
-  <p>
+  <p style={{paddingLeft: "15px"}}>
     <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
   </p>
 );

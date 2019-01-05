@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router,
+import {HashRouter as Router,
     Route,
  } from 'react-router-dom';
 
@@ -30,6 +30,7 @@ const App = () => (
         <Route path={ROUTES.HOME} component={HomePage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
+        <Route exact path={ROUTES.LANDING} component={HomePage} />
       </div>
     </Router>
 );

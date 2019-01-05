@@ -25,17 +25,26 @@ class DashboardPageBase extends React.Component {
   render() {
     const { date, time, imageUrl } = this.state;
 
-    console.log(this.width)
     return (
       <div>
-        <h1>Dashboard</h1>
-        <h2>{!!date && date }</h2>
-        <h2>{!!time && time }</h2>
-        {!!imageUrl && <img src={imageUrl} alt="Uploaded reasource"></img>}<br/>
+        <h1 style={hStyle}>Last image from:</h1>
+        <h2 style={hStyle}>{!!date && date }</h2>
+        <h2 style={hStyle}>{!!time && time }</h2>
+        {!!imageUrl && <img src={imageUrl} style={imgStyle} alt="Uploaded reasource"></img>}<br/>
       </div>
     );
   }
 }
+
+const hStyle = {
+  paddingLeft: "15px",
+}
+
+const imgStyle = {
+  maxWidth: "100%",
+  paddingLeft: "2px",
+  paddingRight: "2px",
+};
 
 const condition = authUser => !!authUser;
 
