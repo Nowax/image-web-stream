@@ -6,7 +6,7 @@ const dayjs = require('dayjs')
 admin.initializeApp(functions.config().firebase);
 admin.app().firestore().settings({timestampsInSnapshots: true});
 
-const daysAgo = 1
+const daysAgo = 7
 const dayToClean = () => dayjs().subtract(daysAgo, 'day').format('YYYY-MM-DD');
 
 exports.dailyCleanup = functions.https.onRequest((req, res) => {
