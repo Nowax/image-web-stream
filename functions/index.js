@@ -15,7 +15,7 @@ exports.dailyCleanup = functions.https.onRequest((req, res) => {
 
     console.log("Staring cleanup for:", collectionName)
     cleanFirestore(collectionName)
-      .then( () => cleanStorage(collectionName))
+      // .then( () => cleanStorage(collectionName))
       .then( () => {
         console.log("Cleanup done")
         res.status(200).end()
